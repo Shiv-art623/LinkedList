@@ -62,7 +62,8 @@ for(int i =0; i<5; i++){
 
 // Print thr the Linked list-------
 Node *temp = head;
-while(temp!= NULL){
+while(temp!= NULL) //or while(temp)
+{
     cout<<temp->data;
     temp = temp->next;
 
