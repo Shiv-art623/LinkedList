@@ -6,6 +6,8 @@ class Node{
     int data;
     Node *next;
 
+
+    //Constructor
     Node(int value){
         data = value;
         next = NULL;
@@ -42,7 +44,7 @@ else{
     return 0;
 }*/
     // convertion of array into linked list at the beginning one by one
-int main(){
+/*int main(){
     int arr[5] = {1,2,3,4,5};
     Node *head;
     head = NULL;
@@ -69,5 +71,96 @@ while(temp!= NULL) //or while(temp)
 
 }
 }
+
+*/
+
+
+//Insertion at the end  of linkedlist.......................
+//arr - 2, 4, 6,8 add karna he link list me
+
+/*
+int main(){
+    int arr[4] = {2,4,6,8};
+    Node *head = NULL;
+    for(int i =0; i<4; i++){
+        //if Linkedlist not existed
+        if(head == NULL){
+            head = new Node(arr[i]);
+        }
+        else{
+            Node *tail = head;
+            while(tail->next!=NULL){
+                tail = tail->next;
+            }
+            Node *temp = new Node(arr[i]);     //tail->next = new Node(arr[i])
+            tail->next = temp;
+        }
+    }
+    Node *i;
+    i = head;
+    while(i){
+        cout<<i->data<<" "<<endl;
+        i = i->next;
+    }
+
+    return 0;
+} */
+
+
+//Creation (add at end) of linkedlist with recurrence------
+Node* CreateLinkedList( int arr[], int index, int size){
+//Base case
+if(index == size) return NULL;
+Node * temp;
+temp = new Node(arr[index]);
+temp->next = CreateLinkedList(arr, index+1, size);
+return temp;
+}
+
+//Creation (add the begining) of linkedList with recursion------
+Node* Createlinkedlist( int arr[], int index, int size, Node* prev){
+    if(index == size) return prev;
+    Node* temp;
+    temp = new Node(arr[index]);
+    temp-> next = prev;
+    return Createlinkedlist(arr,index+1, size, temp);
+}
+
+int main(){
+    Node *Head;
+    Head = NULL;
+     int arr[] = {2,4,6,8,10};
+     Head = CreateLinkedList(arr, 0, 5);
+      //Head = Createlinkedlist(arr,0,5,NULL);
+      // Insertion at particular position----->
+      int x = 3;
+      int value = 30;
+       Node* temp = Head;
+       x--;
+       while(x--){
+        temp = temp-> next;
+       }
+       Node *temp2 = new Node(value);
+       temp2->next = temp-> next;
+       temp->next = temp2;
+     //Print the value
+    //Node* temp;
+    temp = Head;
+
+    while(temp){
+        cout<<temp->data<<" ";
+        temp = temp->next;
+        
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
 
     
