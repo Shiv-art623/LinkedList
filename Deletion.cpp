@@ -17,6 +17,13 @@ int main(){
     head->next->next = new Node(30);
     head->next->next->next = new Node(40);
 
+    //Deletion at the behinning of LL------>
+    if(head != NULL){
+      Node* temp = head;
+      head = head->next;
+      delete temp;
+    }
+
     // Deletion at the end-------------->
 // There are 3 edge cases for deletion an Node from the linkedlist
     if(head!=NULL){ //1st - Existence of a linkedlist
@@ -36,6 +43,19 @@ int main(){
           pre->next = NULL;
         }
     }
+
+    // Deletion at particular position
+    int x = 2; //Position
+    Node* curr = head;
+    Node* pre = NULL;
+    x--;
+    while(x--){
+        pre = curr;
+        curr = curr-> next;
+    }
+     pre->next = curr->next;
+     delete curr;
+
 
     //Print the LL after deletion----->
     Node* temp = head;
