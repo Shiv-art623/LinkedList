@@ -13,8 +13,8 @@ class Node{
         next = NULL;
     }
 };
- //Insertion at the start of LL
- Node* Insertion(Node* head){
+ //Insertion at the start of doubly  LL
+ Node* InsertionAtStart(Node* head){
     if(head == NULL){
         head = new Node(5);
     }
@@ -26,6 +26,22 @@ class Node{
     }
     return head;
  }
+ // Insertion at the end of doubly LL
+ Node* InsertionAtEnd(Node* head){
+    if(head == NULL){
+        head = new Node(7);
+    }
+    else{
+        Node* curr = head;
+        while(curr->next != NULL){
+            curr = curr->next;
+        }
+        Node* temp = new Node(7);
+        curr->next = temp;
+        temp->prev = curr;
+    }
+    return head;
+ }
 int main(){
 Node *head = new Node(1);
     head->next = new Node(2);
@@ -33,7 +49,8 @@ Node *head = new Node(1);
     head->next->next->next = new Node(4);
     head->next->next->next->next = new Node(5);
     head->next->next->next->next->next = new Node(6);
-    Node* temp = Insertion(head);
+    Node* temp = InsertionAtEnd(head);
+    
     while(temp){
         cout<<temp->data<<" ";
         temp = temp->next;
