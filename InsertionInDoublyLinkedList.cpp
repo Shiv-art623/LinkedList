@@ -43,17 +43,37 @@ class Node{
     return head;
  }
 int main(){
-Node *head = new Node(1);
+/*Node *head = new Node(1);
     head->next = new Node(2);
     head->next->next = new Node(3);
     head->next->next->next = new Node(4);
     head->next->next->next->next = new Node(5);
     head->next->next->next->next->next = new Node(6);
     Node* temp = InsertionAtEnd(head);
-    
     while(temp){
         cout<<temp->data<<" ";
         temp = temp->next;
+    }*/
+
+    //Convert an array into doubly LL
+    int arr[] = {1,2,3,4,5};
+    Node* head = NULL, *tail = NULL;
+    for(int i =0; i<5; i++){
+        if(head == NULL) {
+            head = new Node(arr[i]);
+            tail = head;
+        }
+        else{
+            Node* temp = new Node(arr[i]);
+            tail->next = temp;
+            temp->prev = tail;
+            tail = temp; //tail humesha aage badhta rahe...
+        }
+    }
+    Node* temp1 = head;
+    while(temp1){
+        cout<<temp1->data<<" ";
+        temp1 = temp1->next;
     }
     return 0;
 }
