@@ -42,6 +42,16 @@ class Node{
     }
     return head;
  }
+
+ //Creation of DLL using Recursion--------->
+ Node* CreateDLL(int arr[], int index, int size, Node* back){
+    //Base condition
+    if(index == size) return NULL;
+
+    Node* temp = new Node(arr[index]);
+    temp-> prev = back;
+    temp->next = CreateDLL(arr,index+1,size,temp);
+ }
 int main(){
 /*Node *head = new Node(1);
     head->next = new Node(2);
@@ -56,7 +66,7 @@ int main(){
     }*/
 
     //Convert an array into doubly LL
-    int arr[] = {1,2,3,4,5};
+    /*int arr[] = {1,2,3,4,5};
     Node* head = NULL, *tail = NULL;
     for(int i =0; i<5; i++){
         if(head == NULL) {
@@ -69,7 +79,12 @@ int main(){
             temp->prev = tail;
             tail = temp; //tail humesha aage badhta rahe...
         }
-    }
+    }*/
+   int arr[] = {1,2,3,4,5};
+   Node* head = CreateDLL(arr,0,5,NULL);
+ 
+
+
     Node* temp1 = head;
     while(temp1){
         cout<<temp1->data<<" ";
