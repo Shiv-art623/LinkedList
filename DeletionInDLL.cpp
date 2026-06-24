@@ -39,10 +39,12 @@ if(head != NULL){
         delete curr;
     }
 }
+}
 
 // Deletion at the specific position
 
-void DeletionAtAnyPos(Node* head, int pos){
+void DeletionAtAnyPos(Node* &head, int pos){ //head ko reference pass nhi kiya to Agar pos == 1 hai aur first node delete karte ho, to function ke bahar wala head update nahi hoga.
+    //Function ke andar head = NULL ho jayega, lekin bahar wala head ab bhi purani memory ko point karega (dangling pointer).
   //Delete at start
   if(pos == 1){
     if(head->next == NULL){
@@ -61,21 +63,21 @@ void DeletionAtAnyPos(Node* head, int pos){
   else{
     Node* curr = head;
     while(--pos){
-        curr = curr-> next; }
+        curr = curr-> next; 
+    }
         if(curr->next == NULL){
             curr->prev->next = NULL;
             delete curr;
         }
         else{
-            curr->next->prev = curr->next;
-            curr-
-        }
-
+            curr->prev->next = curr->next;
+            curr->next->prev = curr->prev;
+            delete curr;
     }
-  }
 }
-return head;
 }
+
+
 int main(){
   int arr[] = {1,2,3,4,5};
    Node* head = NULL, *tail = NULL;
@@ -91,8 +93,9 @@ int main(){
             tail = temp; //tail humesha aage badhta rahe...
         }
 }
-Node * temp = DeleteAtEnd(head);//DeleteAtStart(head);
-
+//Node * temp = DeleteAtEnd(head);//DeleteAtStart(head);
+DeletionAtAnyPos(head,1);
+Node* temp = head;
 while(temp){
     cout<<temp->data<<" ";
     temp = temp->next;
