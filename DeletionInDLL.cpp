@@ -21,6 +21,7 @@ Node* DeleteAtStart(Node* head){
         delete temp;
         if(head) head->prev = NULL;
     }
+    return head;
 }
 
 //Delete at end--------->
