@@ -52,14 +52,57 @@ class Node{
     temp-> prev = back;
     temp->next = CreateDLL(arr,index+1,size,temp);
  }
+
+ //Insert at a particular position------------->
+
+ Node* InsertAtAny(Node* head, int pos){
+    //Insert at the start---
+    if(pos == 0){
+        // LL doesnt existed----
+        if(head == NULL){
+        head = new Node(5);
+        }
+        //When LL existed------
+    else{
+        Node* temp = new Node(5);
+        temp-> next = head;
+        head-> prev = temp;
+        head = temp;
+    }
+    }
+ // Insert at end OR Middle--------->
+
+ else{
+    Node* curr = head;
+    //go to the node after which i have to insert 
+    while(--pos){
+        curr = curr->next;
+    }
+    //If the Node is the last one(Insert at the end)---->
+    if(curr->next == NULL){
+        Node* temp = new Node(5);
+         temp->prev = curr;
+         curr->next = temp;
+    }
+ // If the is Middle Node-->
+ else{
+    Node* temp = new Node(5);
+    temp->next = curr->next;
+    temp-> prev = curr;
+    curr->next = temp;
+    temp->next->prev = temp;
+ }
+ }
+ return head;
+ }
 int main(){
-/*Node *head = new Node(1);
+Node *head = new Node(1);
     head->next = new Node(2);
     head->next->next = new Node(3);
     head->next->next->next = new Node(4);
     head->next->next->next->next = new Node(5);
     head->next->next->next->next->next = new Node(6);
-    Node* temp = InsertionAtEnd(head);
+    /*Node* temp = InsertionAtEnd(head);
     while(temp){
         cout<<temp->data<<" ";
         temp = temp->next;
@@ -80,15 +123,18 @@ int main(){
             tail = temp; //tail humesha aage badhta rahe...
         }
     }*/
-   int arr[] = {1,2,3,4,5};
+   /*int arr[] = {1,2,3,4,5};
    Node* head = CreateDLL(arr,0,5,NULL);
- 
-
-
-    Node* temp1 = head;
+   Node* temp1 = head;
     while(temp1){
         cout<<temp1->data<<" ";
         temp1 = temp1->next;
+    }*/
+  //Node * head = NULL;
+  Node* temp = InsertAtAny(head,0);
+    while(temp){
+        cout<<temp->data<<" ";
+        temp = temp->next;
     }
     return 0;
 }
