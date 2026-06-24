@@ -39,6 +39,41 @@ if(head != NULL){
         delete curr;
     }
 }
+
+// Deletion at the specific position
+
+void DeletionAtAnyPos(Node* head, int pos){
+  //Delete at start
+  if(pos == 1){
+    if(head->next == NULL){
+        delete head;
+        head =  NULL;
+    }
+    //If LL contain more than one node
+    else{
+        Node* temp = head;
+        head = head-> next;
+        delete temp;
+        head-> prev = NULL;
+    }
+  }
+  //At end OR Middle
+  else{
+    Node* curr = head;
+    while(--pos){
+        curr = curr-> next; }
+        if(curr->next == NULL){
+            curr->prev->next = NULL;
+            delete curr;
+        }
+        else{
+            curr->next->prev = curr->next;
+            curr-
+        }
+
+    }
+  }
+}
 return head;
 }
 int main(){
