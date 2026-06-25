@@ -37,6 +37,24 @@ curr = curr->next;
     return head;
 }
 
+//In-Place---->
+Node* REMOVEDUPLICATES(Node* head){
+    Node* prev = head;
+    Node* curr = head->next;
+
+    while(curr){
+        if(curr->data == prev->data){
+            prev->next = curr->next;
+            delete curr;
+            curr = prev->next;
+        }
+        else{
+            prev = prev->next;
+            curr = curr->next;
+        }
+    }
+    return head;
+}
 
 int main(){
 int arr[] = {2,2,2,3,3,4,4};
@@ -54,7 +72,7 @@ else{
             tail->next = temp;
         }
     }
-    Node* temp = RemoveDuplicates(head);
+    Node* temp = REMOVEDUPLICATES(head);//RemoveDuplicates(head);
     while(temp){
         cout<<temp->data<<" ";
         temp = temp->next;
