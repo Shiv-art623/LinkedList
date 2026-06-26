@@ -9,7 +9,7 @@ Node(int i){
     next = NULL;
 }
 };
-//Remove by using etra space(arr)
+//Remove by using extra space(arr)
 Node* RemoveDuplicates(Node* head){
     if(head == NULL) return NULL;
     vector<int> ans;
