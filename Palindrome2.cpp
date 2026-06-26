@@ -16,6 +16,7 @@ bool isPlaindrome(Node* head){
     if(head->next == NULL) return true;
     Node* temp = head;
     int count =0;
+    
     while(temp){
         count++;
         temp = temp->next;
