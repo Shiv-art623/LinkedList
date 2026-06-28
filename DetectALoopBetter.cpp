@@ -10,7 +10,8 @@ Node(int i){
 }
 };
 
-//Function to find length of the loop   tc - O(n) sc = O(1)
+//Function to find length of the loop   tc - O(n) sc = O(1
+
 int findLengthOfLoop( Node* head){
     Node* slow = head;
     Node* fast = head;

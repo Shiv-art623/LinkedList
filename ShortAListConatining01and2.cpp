@@ -64,4 +64,4 @@ while(temp){
 return 0;
 }
 //TC = O(n^2) overall, but the only function O(n)
-//Sc = O(1)
+//Sc = O(1 )
