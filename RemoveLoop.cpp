@@ -33,6 +33,44 @@ while(slow->next != fast){
 slow->next = NULL;
 }
 
+//Second Method------->
+void RemoveLoop2(Node* head){
+    //Detect teh LOOp first
+    Node* slow = head;
+    Node* fast = head;
+
+while(fast && fast->next ){
+    slow = slow->next;
+    fast = fast->next->next;
+    if(slow == fast) break;
+}
+if(fast == NULL || fast->next == NULL) return;
+
+//Find the length of the loop-->
+slow = fast->next;
+int count = 1;
+while( slow!=fast){
+    count++;
+    slow = slow->next;
+}
+
+slow = head, fast = head;
+//fast ko kitna dur rakhna he (count)
+
+while(count--){
+    fast = fast->next;
+}
+while(slow != fast){
+    slow = slow->next;
+    fast = fast->next;
+}
+//Bring slow to last Node
+while(slow->next != fast){
+    slow = slow->next;
+}
+slow->next = NULL;
+}
+
 int main(){
     int arr[] = {1,2,3,4,5,6,7,8,9,10,11,12};
     int n = 12;
@@ -49,7 +87,8 @@ int main(){
         }
      }
      temp->next =  loopNode;
-     RemoveLoop(head);
+     //RemoveLoop(head);
+     RemoveLoop2(head);
      Node* curr = head;
 while(curr){
     cout << curr->data << " ";
