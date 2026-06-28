@@ -9,6 +9,20 @@ Node(int i){
     next = NULL;
 }
 };
+
+//Function for detection of a loop in LL  with tc = O(n) SC = O(1)
+
+bool DetectLoop(Node* head){
+    Node * slow = head;
+    Node* fast = head;
+
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(slow == fast) return 1;
+    }
+    return 0;
+}
 int main(){
     int arr[] = {1,2,3,4,5,6,7,8,9,10};
     int n = 10;
@@ -25,7 +39,7 @@ int main(){
         }
      }
      temp->next =  loopNode;
-Node* curr = head;
+/*Node* curr = head;
 unordered_map<Node*, bool> visited;
 while(curr != NULL){
    if(visited[curr] == 1){
@@ -35,7 +49,9 @@ while(curr != NULL){
    visited[curr] = 1;
    curr = curr->next;
 }
-cout<<"Not Found";
+cout<<"Not Found";*/
+
+cout<<DetectLoop(head);
     return 0;
 }
 
