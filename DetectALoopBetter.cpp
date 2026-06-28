@@ -39,4 +39,4 @@ cout<<"Not Found";
     return 0;
 }
 
-//Tc - O(n)
+//Tc - O(n)    SC = O(n)
