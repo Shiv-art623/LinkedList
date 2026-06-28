@@ -47,3 +47,4 @@ while(curr != NULL){
 cout<<"Not Found";
     return 0;
 }
+//TC = O(n^2)  SC = O(n)
