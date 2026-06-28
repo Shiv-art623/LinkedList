@@ -10,6 +10,26 @@ Node(int i){
 }
 };
 
+//Function to find length of the loop   tc - O(n) sc = O(1)
+int findLengthOfLoop( Node* head){
+    Node* slow = head;
+    Node* fast = head;
+    while(fast && fast->next){
+        slow = slow->next;
+        fast = fast->next->next;
+        if(fast == slow)
+        break;
+    }
+    if(fast == NULL || fast->next == NULL) return 0;
+    int count = 1;
+    slow = fast->next;
+    while(slow != fast){
+        count++;
+        slow = slow->next;
+    }
+    return count;
+}
+
 //Function for detection of a loop in LL  with tc = O(n) SC = O(1)
 
 bool DetectLoop(Node* head){
@@ -39,6 +59,7 @@ int main(){
         }
      }
      temp->next =  loopNode;
+     ////Tc - O(n)    SC = O(n)---niche ke code ke liye
 /*Node* curr = head;
 unordered_map<Node*, bool> visited;
 while(curr != NULL){
@@ -51,8 +72,7 @@ while(curr != NULL){
 }
 cout<<"Not Found";*/
 
-cout<<DetectLoop(head);
+cout<<DetectLoop(head)<<endl;
+cout<<findLengthOfLoop(head);
     return 0;
 }
-
-//Tc - O(n)    SC = O(n)
