@@ -19,8 +19,25 @@ Node* reverseItwithk(Node *head, int k){
 Node* second, *prev, *curr, *front;
     while(first->next){
          x = k;
-        
+        second = first->next;
+        prev = first;
+        curr = first->next;
+    
+    while(x && curr){
+        front = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = front;
+        x--;
     }
+    first->next = prev;
+    second->next = curr;
+    first = second;
+}
+first = head;
+head = head->next;
+delete first;
+return head;
 }
 
 int main(){
@@ -30,5 +47,12 @@ int main(){
     head->next->next->next = new Node(4);
     head->next->next->next->next = new Node(5);
     head->next->next->next->next->next = new Node(6);
+    int k = 4;
+    head = reverseItwithk(head,k);
+    Node* temp = head;
+    while(temp){
+        cout<<temp->data<<" ";
+        temp = temp->next;
+    }
     return 0;
 }
